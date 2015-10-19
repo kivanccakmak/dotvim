@@ -1,0 +1,4 @@
+bundle/*
+!vimrc
+sessions/*
+!sessions/.gitkeep
