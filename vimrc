@@ -35,9 +35,10 @@ filetype plugin indent on    " required
 "
 "
 
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 set nocompatible
 
-
+set bg=dark
 if &t_Co > 2 || has("gui_running")
     syntax on
 endif
@@ -45,7 +46,6 @@ endif
 set t_Co=256
 
 colorscheme gruvbox
-set bg=dark
 
 
 
