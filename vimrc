@@ -19,6 +19,9 @@ Plugin 'scrooloose/syntastic.git'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -90,5 +93,6 @@ nnoremap <leader><space> :noh<cr>
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+let g:UltiSnipsExpandTrigger="<c-a>"
 
 set noswapfile
