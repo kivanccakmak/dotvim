@@ -61,6 +61,7 @@ map <leader>p "+p
 
 set history=10000
 set wildmenu
+set wildmode=longest:full,full
 set ignorecase smartcase
 set tabstop=4
 set shiftwidth=4
@@ -124,6 +125,11 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader><space> :noh<cr>
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 let g:UltiSnipsExpandTrigger="<c-a>"
 
