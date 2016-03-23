@@ -82,4 +82,7 @@ if has("cscope")
     nnoremap <buffer> <leader>FF :vert scs find f <C-R>=expand("<cfile>")<cr><cr>
 
     nnoremap <buffer> <leader>Fg :pta <C-R>=expand("<cword>")<cr><cr>
+    
+    " close cscope info field
+    nnoremap <leader>cl :ccl<cr>
 endif
