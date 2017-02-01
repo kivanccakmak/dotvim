@@ -16,13 +16,17 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'morhetz/gruvbox'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'SirVer/ultisnips'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-grepper'
 
 
 " All of your Plugins must be added before the following line
@@ -90,47 +94,40 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set hidden
 
-" Tmux key mappings
-if &term =~ '^screen' && exists('$TMUX')
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-    execute "set <xHome>=\e[1;*H"
-    execute "set <xEnd>=\e[1;*F"
-    execute "set <Insert>=\e[2;*~"
-    execute "set <Delete>=\e[3;*~"
-    execute "set <PageUp>=\e[5;*~"
-    execute "set <PageDown>=\e[6;*~"
-    execute "set <xF1>=\e[1;*P"
-    execute "set <xF2>=\e[1;*Q"
-    execute "set <xF3>=\e[1;*R"
-    execute "set <xF4>=\e[1;*S"
-    execute "set <F5>=\e[15;*~"
-    execute "set <F6>=\e[17;*~"
-    execute "set <F7>=\e[18;*~"
-    execute "set <F8>=\e[19;*~"
-    execute "set <F9>=\e[20;*~"
-    execute "set <F10>=\e[21;*~"
-    execute "set <F11>=\e[23;*~"
-    execute "set <F12>=\e[24;*~"
-endif
-
 noremap ^ 0
 noremap 0 ^
 
 nnoremap <leader>l :CtrlPBufTagAll<cr>
+nnoremap <leader>L :CtrlPTag<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+
+nmap <F8> :TagbarToggle<CR>
 
 nnoremap <leader><space> :noh<cr>
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+"for airties code
+set noexpandtab 
+
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+
+nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
 let g:UltiSnipsExpandTrigger="<c-a>"
+let g:gitgutter_max_signs = 500  " default value
 
 set noswapfile
+
+set tags+=tags
+
+"rgrepper usage
+command! -nargs=* -complete=file Rg Grepper -tool rg -query <args>
+
+let g:neocomplete#enable_at_startup = 1
+
+nnoremap <Leader>rgc :Rg -tc <c-r><c-w><cr>
